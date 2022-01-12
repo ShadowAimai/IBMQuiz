@@ -13,8 +13,8 @@ class prices(object):
 
             previous_price = self.inner_queue[-1]
 
-            average_new_price = (new_price.bid + new_price.ask) / 2
-            average_previous_price = (previous_price.bid + previous_price.ask) / 2
+            average_new_price = new_price.average()
+            average_previous_price = previous_price.average()
 
             if average_new_price > average_previous_price:
                 print("Buy")
@@ -33,10 +33,7 @@ class prices(object):
 
     def calculate_average(self):
 
-        mean_bid = np.mean([c.bid for c in self.inner_queue])
-        mean_ask = np.mean([c.ask for c in self.inner_queue])
+        mean = np.mean([c.average() for c in self.inner_queue])
 
-        list_average = (mean_bid + mean_ask) / 2
-
-        print("List average: " + str(list_average))
+        print("List average: " + str(mean))
         

@@ -8,3 +8,5 @@ class Price:
         self.bid = bid
         self.ask = ask
 
+    def average(self):
+        return (self.bid + self.ask) / 2
